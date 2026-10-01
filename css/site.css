@@ -566,7 +566,7 @@ html.a11y-still *, html.a11y-still *::before, html.a11y-still *::after { animati
   .route-more { text-align: start; padding-inline-start: 48px; }
   /* phone: the logo is the subject of the section, so it gets the size to read its lines; the three tools fill the row */
   .pour { gap: 32px; }
-  .pour-src { width: clamp(132px, 38vw, 168px); }
+  .pour-src { width: clamp(200px, 60vw, 260px); }
   .pour-tools { gap: 8px; padding: 0; }
   .pour-tool p { display: none; }
   .pour-img { margin-bottom: 8px; height: clamp(184px, 57vw, 240px); }
