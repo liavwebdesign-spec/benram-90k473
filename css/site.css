@@ -561,9 +561,17 @@ html.a11y-still *, html.a11y-still *::before, html.a11y-still *::after { animati
   #house .head { justify-items: start; text-align: start; }
   #house .head p { margin-inline: 0; }
   .route-more { text-align: start; padding-inline-start: 48px; }
-  .pour-tools { gap: 12px; padding: 0; }
+  /* phone: the logo is the subject of the section, so it gets the size to read its lines; the three tools fill the row */
+  .pour { gap: 32px; }
+  .pour-src { width: clamp(132px, 38vw, 168px); }
+  .pour-tools { gap: 8px; padding: 0; }
   .pour-tool p { display: none; }
-  .pour-img { margin-bottom: 8px; }
+  .pour-img { margin-bottom: 8px; height: clamp(184px, 57vw, 240px); }
+  .pour-jigger .pour-img { height: clamp(122px, 38vw, 160px); }
+  .pour-flask .pour-img { height: clamp(128px, 40vw, 168px); }
+  .pour-shaker .pour-mark { /* qa-allow: physical */ left: 20%; top: 46%; width: 60%; }
+  .pour-jigger .pour-mark { /* qa-allow: physical */ left: 22%; top: 6%; width: 56%; }
+  .pour-flask .pour-mark { /* qa-allow: physical */ left: 27%; top: 28%; width: 48%; }
   .ft-news { justify-items: center; text-align: center; }
   .ft-news p { margin-inline: auto; }
   .ft-form { justify-content: center; }
