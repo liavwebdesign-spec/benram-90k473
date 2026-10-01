@@ -413,7 +413,7 @@
       return { x: s.x + M.vb[0] * q - t.x, y: s.y + M.vb[1] * q - t.y, scale: M.vb[2] * q / (M.m.offsetWidth || 1) };
     }
     if (still() || !window.ScrollTrigger) return;   // reduced motion: the botanicals are already on the tools
-    var LAND = 1, GAP = .22, tl = gsap.timeline({ scrollTrigger: { trigger: root, start: "top 72%", end: "bottom 78%", scrub: .6, invalidateOnRefresh: true,
+    var LAND = 1, GAP = .22, tl = gsap.timeline({ scrollTrigger: { trigger: root, start: "top 72%", end: "bottom 96%", scrub: .6, invalidateOnRefresh: true,
       onUpdate: function () {
         marks.forEach(function (M, k) {
           var on = tl.time() >= k * GAP + LAND * .96;
