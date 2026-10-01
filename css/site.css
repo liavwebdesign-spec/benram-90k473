@@ -377,7 +377,7 @@ html.is-intro .bottle { z-index: 101; }
    three of its botanicals leave it and land on the shaker, the jigger and the flask (the lead flower)
    ========================================================================== */
 .pour { position: relative; display: grid; justify-items: center; gap: clamp(40px, 4.4vw, 72px); }
-.pour-src { width: clamp(104px, 9.4vw, 164px); }
+.pour-src { width: clamp(200px, 17vw, 300px); }
 .pour-src svg { display: block; width: 100%; height: auto; overflow: visible; }
 .pour-src .t { fill: var(--teal); } .pour-src .g { fill: var(--leaf); } .pour-src .o { fill: var(--orange); }
 .pour-src .os { fill: none; stroke: var(--orange); stroke-width: .96px; } .pour-src .ts { fill: none; stroke: var(--teal); stroke-width: .75px; }
