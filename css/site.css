@@ -2,11 +2,13 @@
    Concept: the bottle is a garden. The logo's botanicals swirl in a vortex and close into the bottle, then the scroll
    walks through the house: the shelf, the places the bottles come from, the bar, the man, the table.
    Frame: fluid (MV:fluid). Skin: editorial minimalism / storeos-quiet (MV:s05), ink = the logo's deep teal, burnt orange
-   only on actions. Pair L1: FUP Nesher 300 + FUP Begin 400, Latin Clash Display / Clash Grotesk.
+   only on actions. Headings FUP Eshel 300 (Latin Clash Display 116%), body FUP Begin 400 (Latin Clash Grotesk 114%).
    Motion: signature vortex (custom, from the logo SVG) · MV:g05 · MV:g48 · a drawn botanical that recurs (on MV:g86). */
 
 /* ---------- fonts ---------- */
-@font-face { font-family: "Nesher"; src: url("../fonts/FUP-Nesher-Light.woff2") format("woff2"); font-weight: 300; font-display: swap;
+/* headings: FUP Eshel Light. Chiselled terminals with a thick-thin stroke, like letters cut in metal: it answers the
+   Baskerville of the BENRAM wordmark and the engraving on the bar tools. Hebrew only; Latin falls to Clash Display 116% */
+@font-face { font-family: "Eshel"; src: url("../fonts/FUP-Eshel-Light.woff2") format("woff2"); font-weight: 300; font-display: swap;
   unicode-range: U+0000-0040, U+005B-0060, U+007B-00BF, U+0590-05FF, U+2000-206F, U+20AA, U+FB1D-FB4F; }
 @font-face { font-family: "Begin"; src: url("../fonts/FUP-Begin-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap;
   unicode-range: U+0000-0040, U+005B-0060, U+007B-00BF, U+0590-05FF, U+2000-206F, U+20AA, U+FB1D-FB4F; }
@@ -14,12 +16,12 @@
   unicode-range: U+0000-0040, U+005B-0060, U+007B-00BF, U+0590-05FF, U+2000-206F, U+20AA, U+FB1D-FB4F; }
 @font-face { font-family: "Clash Grotesk"; src: url("../fonts/ClashGrotesk-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; size-adjust: 114%; }
 @font-face { font-family: "Clash Grotesk"; src: url("../fonts/ClashGrotesk-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; size-adjust: 114%; }
-@font-face { font-family: "Clash Display"; src: url("../fonts/ClashDisplay-Light.woff2") format("woff2"); font-weight: 300; font-display: swap; size-adjust: 112%; }
+@font-face { font-family: "Clash Display"; src: url("../fonts/ClashDisplay-Light.woff2") format("woff2"); font-weight: 300; font-display: swap; size-adjust: 116%; }
 
 /* ---------- tokens ---------- */
 :root {
   --a11y-scale: 1;
-  --f-display: "Nesher", "Clash Display", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --f-display: "Eshel", "Clash Display", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --f-text: "Begin", "Clash Grotesk", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --f-latin: "Clash Grotesk", "Begin", system-ui, sans-serif;
 
@@ -59,9 +61,10 @@
   --pad-card: clamp(20px, 2vw, 40px);
   --measure: clamp(560px, 36vw, 760px);
 
-  /* type: Nesher x1.265 and Begin x0.864 are inside the values; line heights x lambda */
-  --fs-hero: calc(clamp(48px, min(6vw, 10vh) + 0.25rem, 144px) * var(--a11y-scale)); /* Nesher x1.265: the 8vh cap times the factor */
-  --fs-h2: calc(clamp(40px, 3.3vw + 0.5rem, 91px) * var(--a11y-scale));
+  /* type: Eshel x0.8 and Begin x0.864 are inside the values. Phone sizes sit above the calibration on purpose:
+     Liav, 1.10.2026, the headings were "tiny" on the phone */
+  --fs-hero: calc(clamp(38px, min(4.6vw, 7.6vh) + 0.25rem, 96px) * var(--a11y-scale));
+  --fs-h2: calc(clamp(30px, 2.3vw + 0.5rem, 60px) * var(--a11y-scale));
   --fs-h3: calc(clamp(19px, 0.6vw + 0.8rem, 24px) * var(--a11y-scale));
   --fs-lead: calc(clamp(17px, 0.3vw + 0.85rem, 20px) * var(--a11y-scale));
   --fs-body: calc(clamp(16px, 0.25vw + 0.75rem, 18px) * var(--a11y-scale));
@@ -72,8 +75,8 @@
 }
 @media (max-width: 767px) {
   :root {
-    --fs-hero: calc(clamp(40px, 12.8vw, 56px) * var(--a11y-scale));
-    --fs-h2: calc(clamp(32px, 8.2vw, 38px) * var(--a11y-scale));
+    --fs-hero: calc(clamp(36px, 10.6vw, 44px) * var(--a11y-scale));
+    --fs-h2: calc(clamp(28px, 7.8vw, 32px) * var(--a11y-scale));
     --hdr: 64px;
   }
 }
@@ -86,8 +89,8 @@ img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
 h1, h2 { margin: 0; font-family: var(--f-display); font-weight: 300; letter-spacing: 0; color: var(--ink); text-wrap: balance; }
-h1 { font-size: var(--fs-hero); line-height: 1; }
-h2 { font-size: var(--fs-h2); line-height: 1.06; }
+h1 { font-size: var(--fs-hero); line-height: 1.22; } /* Eshel lambda 1.33: tall ascenders and descenders */
+h2 { font-size: var(--fs-h2); line-height: 1.26; }
 h3 { margin: 0; font-family: var(--f-text); font-size: var(--fs-h3); font-weight: 500; line-height: 1.4; color: var(--ink); }
 p { margin: 0; }
 strong, b { font-weight: 500; }
@@ -239,7 +242,7 @@ html.is-intro .intro { display: grid; }
 html.intro-out .intro { opacity: 0; transition: opacity .4s var(--ease); }
 .intro > * { pointer-events: auto; }
 .gate-q { position: relative; display: grid; justify-items: center; gap: 14px; max-width: min(92vw, 460px); padding: 32px 28px; border-radius: var(--r-card); background: color-mix(in srgb, var(--surface) 84%, transparent); text-align: center; transition: opacity .4s var(--ease), transform .4s var(--ease); }
-.gate-q .gate-t { font-family: var(--f-display); font-weight: 300; font-size: calc(clamp(34px, 2.4vw + .6rem, 56px) * var(--a11y-scale)); line-height: 1.06; color: var(--ink); }
+.gate-q .gate-t { font-family: var(--f-display); font-weight: 300; font-size: calc(clamp(28px, 1.6vw + .6rem, 40px) * var(--a11y-scale)); line-height: 1.26; color: var(--ink); }
 .gate-q p:not(.gate-t) { font-size: var(--fs-body); color: var(--muted-strong); }
 .gate-q .row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
 .gate-q.gone { opacity: 0; transform: translateY(-10px); pointer-events: none; }
@@ -258,7 +261,7 @@ main:focus { outline: none; box-shadow: none; }
 .hero { display: grid; grid-template-columns: 1fr 1fr; height: calc(100svh - var(--hdr)); min-height: 520px; }
 .hero-txt { /* qa-allow: sec (the hero pads in vh so it fits the first screen, library/heroes.md) */ display: flex; flex-direction: column; justify-content: center; gap: clamp(14px, 2.4vh, 28px); padding: clamp(24px, 5vh, 64px) var(--gutter); }
 .hero-txt .kicker { margin: 0; }
-.hero h1 { max-width: 11ch; line-height: .96; }
+.hero h1 { max-width: 11ch; line-height: 1.14; }
 .hero-lead { max-width: 40ch; font-size: var(--fs-lead); line-height: 1.65; color: var(--muted-strong); }
 .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: var(--fs-micro); color: var(--muted); }
@@ -339,7 +342,7 @@ html.is-intro .bottle { z-index: 101; }
 .mono { position: relative; padding: var(--sec-loose) var(--gutter); text-align: center; overflow: clip; }
 .mono-art { width: clamp(140px, 13vw, 240px); aspect-ratio: 1; margin: 0 auto clamp(24px, 2.4vw, 48px); }
 .mono-art .draw { transform-origin: 50% 92%; }
-.mono h2 { max-width: 16ch; margin-inline: auto; font-size: calc(var(--fs-hero) * .95); line-height: 1.02; } /* the h1 stays the largest line on the page */
+.mono h2 { max-width: 16ch; margin-inline: auto; font-size: calc(var(--fs-hero) * .95); line-height: 1.16; } /* the h1 stays the largest line on the page */
 .mono h2 .w { display: inline-block; clip-path: inset(-.1em -.2em -.18em -.2em); vertical-align: top; color: color-mix(in srgb, var(--ink) 62%, var(--surface)); transition: color .35s var(--ease); }
 .mono h2 .wi { display: inline-block; will-change: transform; }
 .mono h2 .w.on { color: var(--ink); }
