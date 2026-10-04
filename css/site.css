@@ -384,15 +384,20 @@ html.is-intro .bottle { z-index: 101; }
 .pour-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: var(--gap-m); width: 100%; margin: 0; padding: 0 8vw; list-style: none; }
 .pour-tool { display: grid; justify-items: center; gap: 8px; text-align: center; }
 .pour-img { position: relative; height: clamp(200px, 24vw, 380px); margin-bottom: 16px; }
-.pour-jigger .pour-img { height: clamp(132px, 15.6vw, 248px); }
-.pour-flask .pour-img { height: clamp(140px, 16.8vw, 266px); }
+.pour-jigger .pour-img { height: clamp(140px, 16.4vw, 262px); }
+.pour-flask .pour-img { height: clamp(150px, 17.6vw, 280px); }
 .pour-img img { display: block; width: auto; height: 100%; mix-blend-mode: multiply; }
+/* Ben's own tools (1.10.2026). Under the print: the flask without its lily, and a faint ghost of the shaker and jigger.
+   The print itself is revealed where the botanical lands; without motion it is simply there */
+.pour-img .pour-print { position: absolute; inset: 0; }
 /* where each botanical lands, in the tool's own frame: the body of the shaker, the upper cup of the jigger, the face of the flask.
    Physical left on purpose: the photos are not mirrored in RTL, so the spot on the metal is physical too */
-.pour-mark { position: absolute; z-index: 2; width: 46%; height: auto; mix-blend-mode: multiply; transform-origin: 0 0; }
-.pour-shaker .pour-mark { /* qa-allow: physical */ left: 24%; top: 47%; width: 52%; }
-.pour-jigger .pour-mark { /* qa-allow: physical */ left: 30%; top: 8%; width: 40%; }
-.pour-flask .pour-mark { /* qa-allow: physical */ left: 31%; top: 30%; width: 40%; }
+.pour-mark { position: absolute; z-index: 2; width: 46%; height: auto; mix-blend-mode: multiply; transform-origin: 0 0; visibility: hidden; }
+/* the lead flower: the logo's orange lily turns teal and mirrors in the air, as Ben printed it on the flask */
+.pour-flask .draw .o { fill: var(--lily, var(--orange)); stroke: var(--lily, var(--orange)); } .pour-flask .draw .os { stroke: var(--lily, var(--orange)); }
+.pour-shaker .pour-mark { /* qa-allow: physical */ left: 22%; top: 46%; width: 56%; }
+.pour-jigger .pour-mark { /* qa-allow: physical */ left: 30%; top: 54%; width: 40%; }
+.pour-flask .pour-mark { /* qa-allow: physical */ left: 51.65%; top: 18.47%; width: 19.7%; } /* exactly on the printed lily */
 .pour-tool h3 { font-size: calc(clamp(20px, .6vw + .9rem, 26px) * var(--a11y-scale)); font-weight: 500; line-height: 1.3; }
 .pour-tool p { max-width: 24ch; font-size: var(--fs-small); line-height: 1.6; color: var(--muted-strong); text-wrap: balance; }
 .pour-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 24px; margin-top: clamp(40px, 4vw, 72px); }
@@ -572,9 +577,6 @@ html.a11y-still *, html.a11y-still *::before, html.a11y-still *::after { animati
   .pour-img { margin-bottom: 8px; height: clamp(184px, 57vw, 240px); }
   .pour-jigger .pour-img { height: clamp(122px, 38vw, 160px); }
   .pour-flask .pour-img { height: clamp(128px, 40vw, 168px); }
-  .pour-shaker .pour-mark { /* qa-allow: physical */ left: 20%; top: 46%; width: 60%; }
-  .pour-jigger .pour-mark { /* qa-allow: physical */ left: 22%; top: 6%; width: 56%; }
-  .pour-flask .pour-mark { /* qa-allow: physical */ left: 27%; top: 28%; width: 48%; }
   .ft-news { justify-items: center; text-align: center; }
   .ft-news p { margin-inline: auto; }
   .ft-form { justify-content: center; }

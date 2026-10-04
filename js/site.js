@@ -412,16 +412,14 @@
       var M = marks[k], s = at(src), t = at(M.m), q = src.offsetWidth / VBW;
       return { x: s.x + M.vb[0] * q - t.x, y: s.y + M.vb[1] * q - t.y, scale: M.vb[2] * q / (M.m.offsetWidth || 1) };
     }
-    if (still() || !window.ScrollTrigger) return;   // reduced motion: the botanicals are already on the tools
-    var LAND = 1, GAP = .22, tl = gsap.timeline({ scrollTrigger: { trigger: root, start: "top 72%", end: "bottom 96%", scrub: .6, invalidateOnRefresh: true,
-      onUpdate: function () {
-        marks.forEach(function (M, k) {
-          var on = tl.time() >= k * GAP + LAND * .96;
-          if (on !== M.landed) { M.landed = on; if (on) pen(M.d, .5); }   // it lands, and the pen goes over it once, like an engraving
-        });
-      } } });
+    if (still() || !window.ScrollTrigger) return;   // reduced motion: Ben's printed tools, as they are
+    var LAND = 1, GAP = .22, tl = gsap.timeline({ scrollTrigger: { trigger: root, start: "top 72%", end: "bottom 96%", scrub: .6, invalidateOnRefresh: true } });
     marks.forEach(function (M, k) {
-      var t0 = k * GAP, spin = [-28, 22, -16][k];
+      var t0 = k * GAP, spin = [-28, 22, -16][k], li = M.m.closest(".pour-tool"), print = li.querySelector(".pour-print");
+      var flask = li.classList.contains("pour-flask");
+      // where the print starts: the centre of the landed botanical, in the tool's own frame
+      var cx = ((M.m.offsetLeft + M.m.offsetWidth / 2) / M.m.parentNode.offsetWidth * 100).toFixed(1) + "%",
+          cy = ((M.m.offsetTop + M.m.offsetHeight / 2) / M.m.parentNode.offsetHeight * 100).toFixed(1) + "%";
       tl.fromTo(M.m, { autoAlpha: 0 }, { autoAlpha: 1, duration: .03, ease: "none" }, t0)
         .to(M.home, { opacity: 0, duration: .03, ease: "none" }, t0)
         // x and y on different curves: the piece lifts out of the bottle first, then falls onto the tool
@@ -429,10 +427,17 @@
         .fromTo(M.m, { y: function () { return from(k).y; } }, { y: 0, duration: LAND, ease: "power2.in" }, t0)
         .fromTo(M.m, { scale: function () { return from(k).scale; } }, { scale: 1, duration: LAND, ease: "power1.inOut" }, t0)
         .to(M.m, { keyframes: { rotation: [0, spin, 0], easeEach: "sine.inOut" }, duration: LAND, ease: "none" }, t0);
-    });
-    marks.forEach(function (M) { M.landed = false; });
-    if (fine) root.querySelectorAll(".pour-tool").forEach(function (li, k) {
-      li.addEventListener("mouseenter", function () { if (marks[k].landed && !marks[k].d.classList.contains("is-pen")) pen(marks[k].d, .5); });
+      if (flask) {
+        // the lead flower: orange in the logo, teal and mirrored on the flask; it lands on its printed place and becomes the print
+        // it turns over late in the flight, and changes colour while it is edge-on, so neither move shows a halfway state
+        tl.fromTo(M.d, { rotationY: 0 }, { rotationY: 180, transformOrigin: "50% 50%", transformPerspective: 600, duration: LAND * .4, ease: "sine.inOut", immediateRender: false }, t0 + LAND * .5)
+          .fromTo(M.m, { "--lily": "#d75227" }, { "--lily": "#054959", duration: LAND * .08, ease: "none", immediateRender: false }, t0 + LAND * .66)
+          .fromTo(print, { opacity: 0 }, { opacity: 1, duration: .18, ease: "none" }, t0 + LAND * .97);
+      } else {
+        // the print blooms out of the spot where the botanical landed
+        tl.fromTo(print, { clipPath: "circle(0% at " + cx + " " + cy + ")" }, { clipPath: "circle(120% at " + cx + " " + cy + ")", duration: .55, ease: "power2.out" }, t0 + LAND * .95);
+      }
+      tl.to(M.m, { autoAlpha: 0, duration: .2, ease: "none" }, t0 + LAND * 1.02);
     });
   })();
 
